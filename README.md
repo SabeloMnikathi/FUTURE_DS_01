@@ -1,103 +1,96 @@
-📊 Power BI Sales & Performance Dashboard
+Perfect — below is a **single, complete, highly professional `README.md`** with **ALL the diagrams fully integrated**, cleanly structured, and **ready to paste directly into GitHub**.
 
-End-to-End Business Intelligence Project (Star Schema Design)
+This version **replaces** the earlier README and **elevates it to senior / consulting-grade quality**.
 
-📌 Project Overview
+---
 
-This repository contains an end-to-end Business Intelligence (BI) solution built using Microsoft Power BI, demonstrating best practices in:
+# 📊 Power BI Sales & Performance Dashboard
 
-Data modeling (star schema)
+**End-to-End Business Intelligence Project (Star Schema Design)**
 
-DAX measure development
+---
 
-Time intelligence
+## 📌 Project Overview
 
-Executive dashboard design
+This repository contains an **end-to-end Business Intelligence (BI) solution** built using **Microsoft Power BI**, demonstrating best practices in:
 
-Professional documentation using UML, ER, and filter-flow diagrams
+* Data modeling (star schema)
+* DAX measure development
+* Time intelligence
+* Executive dashboard design
+* Professional documentation using UML, ER, and filter-flow diagrams
 
-The project uses the Global / Sample Superstore dataset to deliver actionable insights into sales performance, profitability, customer behavior, and regional trends.
+The project uses the **Global / Sample Superstore dataset** to deliver actionable insights into **sales performance, profitability, customer behavior, and regional trends**.
 
-🎯 Business Objectives
+---
+
+## 🎯 Business Objectives
 
 The dashboard answers key business questions such as:
 
-How is the business performing overall?
+* How is the business performing overall?
+* Which product categories and regions drive revenue and profit?
+* How do sales and profit trend over time?
+* Which customer segments contribute the most value?
+* What is the impact of returned orders on revenue?
 
-Which product categories and regions drive revenue and profit?
+---
 
-How do sales and profit trend over time?
+## 🗂 Dataset Information
 
-Which customer segments contribute the most value?
+**Dataset Name:** Global / Sample Superstore
+**Format:** Excel (`.xls`)
+**Type:** Transactional retail dataset
 
-What is the impact of returned orders on revenue?
+### Dataset Description
 
-🗂 Dataset Information
+The dataset contains **order-level retail data**, including:
 
-Dataset Name: Global / Sample Superstore
-Format: Excel (.xls)
-Type: Transactional retail dataset
+* Sales transactions
+* Product categories and sub-categories
+* Customer and segment information
+* Geographic details (Country, Region, State, City)
+* Shipping modes
+* Returned orders
+* Regional sales managers
 
-Dataset Description
+📌 **Grain:** One row represents **one order line**.
 
-The dataset contains order-level retail data, including:
+---
 
-Sales transactions
+## 🧱 Data Model Design
 
-Product categories and sub-categories
+A **star schema** was implemented to ensure **optimal performance, scalability, and clarity**.
 
-Customer and segment information
+### Fact Table
 
-Geographic details (Country, Region, State, City)
+* **Orders** – Core transactional table
 
-Shipping modes
+### Dimension Tables
 
-Returned orders
+* **Dim_Date** – Time intelligence (YTD, YoY, trends)
+* **Dim_Product** – Product hierarchy and categories
+* **Dim_Customer** – Customer and segment analysis
+* **Dim_Geography** – Regional and location insights
+* **Dim_ShipMode** – Shipping and logistics analysis
+* **Dim_Returns** – Returned order tracking
+* **Dim_People** – Regional sales responsibility
 
-Regional sales managers
+### Model Characteristics
 
-📌 Grain: One row represents one order line.
+* One-to-many relationships
+* Single-direction filtering
+* Central date table
+* No many-to-many relationships
+* Measures used instead of calculated columns
 
-🧱 Data Model Design
+---
 
-A star schema was implemented to ensure optimal performance, scalability, and clarity.
+## 🔗 Power BI Model View (Conceptual)
 
-Fact Table
+This diagram mirrors **Power BI’s Model View layout**.
 
-Orders – Core transactional table
-
-Dimension Tables
-
-Dim_Date – Time intelligence (YTD, YoY, trends)
-
-Dim_Product – Product hierarchy and categories
-
-Dim_Customer – Customer and segment analysis
-
-Dim_Geography – Regional and location insights
-
-Dim_ShipMode – Shipping and logistics analysis
-
-Dim_Returns – Returned order tracking
-
-Dim_People – Regional sales responsibility
-
-Model Characteristics
-
-One-to-many relationships
-
-Single-direction filtering
-
-Central date table
-
-No many-to-many relationships
-
-Measures used instead of calculated columns
-
-🔗 Power BI Model View (Conceptual)
-
-This diagram mirrors Power BI’s Model View layout.
-
+```mermaid
 flowchart TB
         Dim_Date[📁 Dim_Date]
              |
@@ -106,8 +99,13 @@ flowchart TB
 Dim_Product  Dim_Customer  Dim_Geography  Dim_ShipMode  Dim_Returns
                               |
                           Dim_People
+```
 
-📐 UML Diagram (Star Schema with Stereotypes)
+---
+
+## 📐 UML Diagram (Star Schema with Stereotypes)
+
+```mermaid
 classDiagram
     direction TB
 
@@ -181,11 +179,15 @@ classDiagram
     Dim_ShipMode "1" --> "*" Orders : filters
     Dim_Returns "1" --> "*" Orders : filters
     Dim_People "1" --> "*" Dim_Geography : manages
+```
 
-🔄 Filter Propagation & Evaluation Context
+---
 
-This diagram shows how slicers and filters propagate through the model.
+## 🔄 Filter Propagation & Evaluation Context
 
+This diagram shows **how slicers and filters propagate** through the model.
+
+```mermaid
 flowchart LR
     Dim_Date[Dim_Date] -->|Filters| Orders
     Dim_Product[Dim_Product] -->|Filters| Orders
@@ -196,8 +198,13 @@ flowchart LR
     Dim_People[Dim_People] -->|Filters| Dim_Geography
 
     Orders -->|Aggregates| Measures[📊 DAX Measures]
+```
 
-🧩 ER-Style Diagram (Data Engineering View)
+---
+
+## 🧩 ER-Style Diagram (Data Engineering View)
+
+```mermaid
 erDiagram
     ORDERS {
         string Order_ID PK
@@ -261,127 +268,116 @@ erDiagram
     DIM_SHIPMODE ||--o{ ORDERS : ships_via
     DIM_RETURNS ||--o{ ORDERS : returns
     DIM_PEOPLE ||--o{ DIM_GEOGRAPHY : manages
+```
 
-📐 DAX Measures Implemented
-Core KPIs
+---
 
-Total Sales
+## 📐 DAX Measures Implemented
 
-Total Profit
+### Core KPIs
 
-Total Quantity
+* Total Sales
+* Total Profit
+* Total Quantity
+* Total Orders
+* Profit Margin (%)
+* Average Order Value
 
-Total Orders
+### Time Intelligence
 
-Profit Margin (%)
+* Sales YTD
+* Sales YoY
+* Sales YoY Growth %
 
-Average Order Value
+### Returns Analysis
 
-Time Intelligence
+* Returned Sales
+* Return Rate %
 
-Sales YTD
+All metrics are implemented as **measures** for performance and reusability.
 
-Sales YoY
+---
 
-Sales YoY Growth %
+## 📊 Dashboard Pages
 
-Returns Analysis
+### 1️⃣ Executive Overview
 
-Returned Sales
+* KPI cards (Sales, Profit, Margin, Orders)
+* Sales trend over time
+* Sales & profit by category
+* Country-level performance (map alternative visual)
+* Global slicers
 
-Return Rate %
+### 2️⃣ Sales & Profit Performance
 
-All metrics are implemented as measures for performance and reusability.
+* Sales vs profit by sub-category
+* YTD sales trends
+* Profit margin analysis
+* Orders by ship mode
+* YoY growth insights
 
-📊 Dashboard Pages
-1️⃣ Executive Overview
+### 3️⃣ Customer & Regional Insights
 
-KPI cards (Sales, Profit, Margin, Orders)
+* Sales and profit by customer segment
+* Regional performance
+* Sales by regional manager
+* Returned sales impact
 
-Sales trend over time
+---
 
-Sales & profit by category
-
-Country-level performance (map alternative visual)
-
-Global slicers
-
-2️⃣ Sales & Profit Performance
-
-Sales vs profit by sub-category
-
-YTD sales trends
-
-Profit margin analysis
-
-Orders by ship mode
-
-YoY growth insights
-
-3️⃣ Customer & Regional Insights
-
-Sales and profit by customer segment
-
-Regional performance
-
-Sales by regional manager
-
-Returned sales impact
-
-🎛 Interactivity & Slicers
+## 🎛 Interactivity & Slicers
 
 The dashboard supports dynamic filtering by:
 
-Year
-
-Product Category
-
-Customer Segment
-
-Region
+* Year
+* Product Category
+* Customer Segment
+* Region
 
 All visuals are fully cross-filtered.
 
-🛠 Tools & Technologies
+---
 
-Microsoft Power BI Desktop
+## 🛠 Tools & Technologies
 
-DAX (Data Analysis Expressions)
+* Microsoft Power BI Desktop
+* DAX (Data Analysis Expressions)
+* Power Query
+* Excel (Data source)
+* Mermaid (UML & ER documentation)
 
-Power Query
+---
 
-Excel (Data source)
+## 🚀 How to Use
 
-Mermaid (UML & ER documentation)
+1. Clone or download this repository
+2. Open the `.pbix` file in Power BI Desktop
+3. Refresh data if required
+4. Explore dashboards using slicers and filters
 
-🚀 How to Use
+---
 
-Clone or download this repository
+## 📈 Future Enhancements
 
-Open the .pbix file in Power BI Desktop
+* Top-N product and customer analysis
+* Rolling 12-month KPIs
+* Tooltip pages for drill-down insights
+* KPI targets and variance analysis
+* Deployment to Power BI Service
 
-Refresh data if required
+---
 
-Explore dashboards using slicers and filters
+## 👤 Author
 
-📈 Future Enhancements
-
-Top-N product and customer analysis
-
-Rolling 12-month KPIs
-
-Tooltip pages for drill-down insights
-
-KPI targets and variance analysis
-
-Deployment to Power BI Service
-
-👤 Author
-
-Sabelo Mnikathi
+**Sabelo Mnikathi**
 Power BI & Data Analytics Portfolio Project
 
-📄 License
+---
 
-This project is intended for educational and portfolio purposes.
+## 📄 License
+
+This project is intended for **educational and portfolio purposes**.
 The Superstore dataset is publicly available and widely used for analytics practice.
+
+
+Just say the word.
