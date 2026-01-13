@@ -1,8 +1,4 @@
-Perfect — below is a **single, complete, highly professional `README.md`** with **ALL the diagrams fully integrated**, cleanly structured, and **ready to paste directly into GitHub**.
 
-This version **replaces** the earlier README and **elevates it to senior / consulting-grade quality**.
-
----
 
 # 📊 Power BI Sales & Performance Dashboard
 
