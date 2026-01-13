@@ -88,13 +88,26 @@ This diagram mirrors **Power BI’s Model View layout**.
 
 ```mermaid
 flowchart TB
-        Dim_Date[📁 Dim_Date]
-             |
-        Orders[📊 Orders (Fact)]
-     /    |      |      |      \
-Dim_Product  Dim_Customer  Dim_Geography  Dim_ShipMode  Dim_Returns
-                              |
-                          Dim_People
+    Dim_Date["📁 Dim_Date"]
+    Orders["📊 Orders (Fact)"]
+
+    Dim_Product["📁 Dim_Product"]
+    Dim_Customer["📁 Dim_Customer"]
+    Dim_Geography["📁 Dim_Geography"]
+    Dim_ShipMode["📁 Dim_ShipMode"]
+    Dim_Returns["📁 Dim_Returns"]
+    Dim_People["📁 Dim_People"]
+
+    %% Relationships
+    Dim_Date --> Orders
+    Dim_Product --> Orders
+    Dim_Customer --> Orders
+    Dim_Geography --> Orders
+    Dim_ShipMode --> Orders
+    Dim_Returns --> Orders
+
+    Dim_People --> Dim_Geography
+
 ```
 
 ---
